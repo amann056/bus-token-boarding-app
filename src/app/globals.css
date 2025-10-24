@@ -1,0 +1,85 @@
+/* Updated: 2025-10-24T07:26:48.672Z */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-cyan: var(--cyan);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-dark-card: var(--dark-card);
+  --color-dark-bg: var(--dark-bg);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.15 0.01 240);
+  --foreground: oklch(0.98 0 0);
+  --cyan: oklch(0.75 0.15 195);
+  --cyan-glow: oklch(0.75 0.15 195 / 0.3);
+  --dark-card: oklch(0.2 0.01 240);
+  --dark-bg: oklch(0.12 0.01 240);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: var(--color-dark-bg);
+    color: var(--color-foreground);
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .bg-dark {
+    background: var(--color-dark-bg);
+  }
+  
+  .bg-dark-card {
+    background: var(--color-dark-card);
+  }
+  
+  .text-cyan {
+    color: var(--color-cyan);
+  }
+  
+  .border-cyan {
+    border-color: var(--color-cyan);
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 20px var(--color-cyan-glow);
+  }
+  
+  .pulse-ring {
+    animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulseRing {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
